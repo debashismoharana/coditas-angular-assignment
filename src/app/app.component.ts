@@ -24,14 +24,12 @@ export class AppComponent {
         this.pages.push(i);
       }
       this.profilesToShow = this.profiles['items'].slice(0, 10);
-      console.log(this.profiles);
     }, (error) => {
       console.error(error);
     });
   }
 
   sortResult(value: string) {
-    console.log(value);
     switch (value) {
       case 'sortByName':
         this.showResultOnKeyStroke();
@@ -54,10 +52,8 @@ export class AppComponent {
       for (const repo in response) {
         this.repoList.push(response[repo]);
       }
-      console.log(this.repoList);
     }, (error) => {
       console.error(error);
     });
-    console.log();
   }
 }

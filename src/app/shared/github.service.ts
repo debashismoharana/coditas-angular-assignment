@@ -11,4 +11,7 @@ export class GithubService {
   searchString(searchString) {
     return this.http.get(`https://api.github.com/search/users?q=${searchString}`);
   }
+  showRepos(username) {
+    return this.http.get(`https://api.github.com/users/${username}/repos`);
+  }
 }

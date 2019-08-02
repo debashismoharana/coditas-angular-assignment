@@ -28,6 +28,15 @@
           <div><span>Username: </span>{{ profile.login }}</div>
           <div><span>Profile URL: </span>{{profile.html_url}}</div>
           <div><span>Score: </span>{{profile.score}}</div>
+          <button (click)="showDetails($event)">Details</button>
+          <div *ngIf="repoList.length > 0">
+            <table *ngIf="profile.login == repoList[0].owner.login" class="details">
+              <tr *ngFor="let repository of repoList">
+                  <td>{{repository.name}}</td>
+                  <td>{{repository.language}}</td>
+              </tr>
+            </table>
+          </div>
         </div>
       </div>
     </div>

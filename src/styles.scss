@@ -9,3 +9,9 @@
 .display-flex{
   display: flex;
 }
+tr:nth-child(even){
+  background: #ddd;
+}
+.details{
+  width: 100%;
+}

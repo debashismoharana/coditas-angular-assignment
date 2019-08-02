@@ -13,6 +13,7 @@ export class AppComponent {
   currentPageNumber = 1;
   profilesToShow = [];
   pages = [];
+  repoList = [];
   constructor(private githubService: GithubService) { }
 
   showResultOnKeyStroke() {
@@ -44,5 +45,19 @@ export class AppComponent {
   }
   goToPage(pageNumber) {
     this.profilesToShow = this.profiles['items'].slice(pageNumber * 10 - 9, pageNumber * 10);
+  }
+  showDetails(event) {
+    const username = event.target.parentElement.childNodes[0].childNodes[1].data;
+    this.githubService.showRepos(username).subscribe((response) => {
+      this.repoList = [];
+      // tslint:disable-next-line: forin
+      for (const repo in response) {
+        this.repoList.push(response[repo]);
+      }
+      console.log(this.repoList);
+    }, (error) => {
+      console.error(error);
+    });
+    console.log();
   }
 }
